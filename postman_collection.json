@@ -1,0 +1,409 @@
+{
+	"info": {
+		"_postman_id": "8f18f4f0-9b84-4d6f-92e1-dc081bef207f",
+		"name": "postman_collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/user/addNew",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "16ba75c2-68de-43b8-a674-ffd8fab6ce11",
+						"exec": [
+							"pm.test(\"Saving user id in environment\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.environment.set(\"id_user_1\", jsonData.id);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"User name equals to Guilherme\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.name).to.eql(\"Guilherme\");\r",
+							"});\r",
+							"pm.test(\"User email equals to guigalv@hotmail.com\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.email).to.eql(\"guigalv@hotmail.com\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"User id not null\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id).not.eql(null);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "2e0270d3-9cf2-47a8-a42c-de8d97747744",
+						"exec": [
+							"pm.environment.set(\"name\", \"Guilherme\");\r",
+							"pm.environment.set(\"email\", \"guigalv@hotmail.com\");\r",
+							"pm.environment.set(\"n\", \"9875\");\r",
+							"pm.environment.set(\"k\", 4);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/user/addNew",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"addNew"
+					]
+				},
+				"description": "Add New User in system"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/user/addNew",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "99b9ec60-3b1e-49e0-904e-2de0c294a06f",
+						"exec": [
+							"\r",
+							"pm.test(\"Set id_user_2\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.environment.set(\"id_user_2\", jsonData.id);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"User name equals to Inter\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.name).to.eql(\"Inter\");\r",
+							"});\r",
+							"pm.test(\"User email equals to inter@inter.com.br\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.email).to.eql(\"inter@inter.com.br\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"User id not null\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id).not.eql(null);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Inter\",\r\n    \"email\": \"inter@inter.com.br\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/user/addNew",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"addNew"
+					]
+				},
+				"description": "Add New User in system\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/user/insertPublicKey/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "814fc9bf-808d-4842-b606-70f90ac2a8a2",
+						"exec": [
+							"pm.test(\"Status code is 202\", function () {\r",
+							"    pm.response.to.have.status(202);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "bcdb7878-d22d-4f32-885f-c51f97906460",
+						"exec": [
+							"pm.environment.set(\"public_Key\", \"MIIBITANBgkqhkiG9w0BAQEFAAOCAQ4AMIIBCQKCAQBc78jHPHnQjVdde/ONakqzNJLAVJRNTN/KPYLue4T+c9uSDypsNnzm31ZlBxfwFos8tdZUuGorpjFVbty3b2pXYTzDLpZqf4cA/X5Sn34EynVLSqBeoGammaBfa7oC9jG2KAPQ6SqJKI1cHJ/5H8CFPCf0pzMEJgJ9yZqofJZag5aRXhjvCF4ta7Vui8N2i+Nm8X0YKyHEB1WdTeylRoqs16EKALpJlcQ5b7NTJsZ95ATHJ0dLvSM0BIZ2O+Zh4d6l2Rr6sFWDd1HQIobd4lqhIslJeEv9uopDDJRiqWY2zbRJrjQEbD8qukTwvUIWJSHKymM3XqJkXfKCKUhdRnqJAgMBAAE=\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "MIIBITANBgkqhkiG9w0BAQEFAAOCAQ4AMIIBCQKCAQBc78jHPHnQjVdde/ONakqzNJLAVJRNTN/KPYLue4T+c9uSDypsNnzm31ZlBxfwFos8tdZUuGorpjFVbty3b2pXYTzDLpZqf4cA/X5Sn34EynVLSqBeoGammaBfa7oC9jG2KAPQ6SqJKI1cHJ/5H8CFPCf0pzMEJgJ9yZqofJZag5aRXhjvCF4ta7Vui8N2i+Nm8X0YKyHEB1WdTeylRoqs16EKALpJlcQ5b7NTJsZ95ATHJ0dLvSM0BIZ2O+Zh4d6l2Rr6sFWDd1HQIobd4lqhIslJeEv9uopDDJRiqWY2zbRJrjQEbD8qukTwvUIWJSHKymM3XqJkXfKCKUhdRnqJAgMBAAE=\r\n",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/user/insertPublicKey/{{id_user_1}}",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"insertPublicKey",
+						"{{id_user_1}}"
+					]
+				},
+				"description": "Insert public key of user 1"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/user/get/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "464f457e-eb28-4856-8622-7c22ac70f00c",
+						"exec": [
+							"\r",
+							"pm.test(\"User id not null\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    var id_user_1 = pm.environment.get(\"id_user_1\");\r",
+							"    pm.expect(jsonData.id).to.eql( id_user_1 );\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/user/get/{{id_user_1}}",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"get",
+						"{{id_user_1}}"
+					]
+				},
+				"description": "Get User 1 on system"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/uniqueType/save",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "c5a08171-4dd8-4544-81c7-21bf0fae2462",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "f3e10a50-22d9-48b8-8337-30f1274d6151",
+						"exec": [
+							"\r",
+							"pm.test(\"Body matches to uniqueTypeResult\", function () {\r",
+							"    pm.expect(pm.response.body) == 8;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/uniqueType/save?n=9875&k=4&user={{id_user_1}}",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"uniqueType",
+						"save"
+					],
+					"query": [
+						{
+							"key": "n",
+							"value": "9875"
+						},
+						{
+							"key": "k",
+							"value": "4"
+						},
+						{
+							"key": "user",
+							"value": "{{id_user_1}}"
+						}
+					]
+				},
+				"description": "Save one unique key of a user"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/uniqueType/save?n=9875&k=4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3da7650d-a15f-40cf-b472-0f45957f5d49",
+						"exec": [
+							"pm.test(\"Body matches uniqueType result\", function () {\r",
+							"    pm.expect(pm.response.body) == 8;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/uniqueType/save?n=9875&k=4",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"uniqueType",
+						"save"
+					],
+					"query": [
+						{
+							"key": "n",
+							"value": "9875"
+						},
+						{
+							"key": "k",
+							"value": "4"
+						}
+					]
+				},
+				"description": "Save a unique type without user"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/uniqueType/get/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "42e91ab9-915a-45ca-9cac-617d2ecba8aa",
+						"exec": [
+							"pm.test(\"UniqueTypes id not null\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id).not.eql(null);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/uniqueType/get/{{id_user_1}}",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"uniqueType",
+						"get",
+						"{{id_user_1}}"
+					]
+				},
+				"description": "Get all unique types of user"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/user/delete/{{id_user_2}}",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "419993b3-9596-49d4-99d3-5852f0d69d9c",
+						"exec": [
+							"pm.test(\"Status code is 202\", function () {\r",
+							"    pm.response.to.have.status(202);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/user/delete/{{id_user_2}}",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"delete",
+						"{{id_user_2}}"
+					]
+				},
+				"description": "Delete user 2 on System"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
